@@ -1,0 +1,16 @@
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\bin\Release\Mousehook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\bin\Release\Mousehook.pdb
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.Form1.resources
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.dll
+C:\Users\micha\Documents\github\StandardInGamingInputLowing\Src\StandardInGamingInputLowing\SIGIL\Mousehook\obj\Release\Mousehook.pdb
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\bin\Release\Mousehook.dll
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\bin\Release\Mousehook.pdb
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.csproj.AssemblyReference.cache
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.Form1.resources
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.csproj.GenerateResource.cache
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.dll
+C:\Users\micha\Documents\github\MouseTrackerOverlay\Src\MouseTrackerOverlay\Mousehook\obj\Release\Mousehook.pdb
