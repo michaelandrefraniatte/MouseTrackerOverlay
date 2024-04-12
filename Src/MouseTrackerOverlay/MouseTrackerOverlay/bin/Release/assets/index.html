@@ -30,10 +30,10 @@
 
         var cursor = document.getElementById("cursor");
 
-        function setMouse(mousex, mousey, mouseclick) {
+        function setMouse(mousex, mousey, mouseclick, ratio) {
             try {
-                cursor.style.left = (mousex / 1.25 - 15) + "px";
-                cursor.style.top = (mousey / 1.25 - 15) + "px";
+                cursor.style.left = (mousex / ratio - 15) + "px";
+                cursor.style.top = (mousey / ratio - 15) + "px";
                 if (mouseclick == 'True') {
                     cursor.style.backgroundColor = "white";
                 }

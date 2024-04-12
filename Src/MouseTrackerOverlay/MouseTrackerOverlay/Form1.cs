@@ -18,6 +18,8 @@ namespace MouseTrackerOverlay
         {
             InitializeComponent();
         }
+        [DllImport("user32.dll")]
+        public static extern bool EnumDisplaySettings(string lpszDeviceName, int iModeNum, ref DEVMODE lpDevMode);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         private static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -32,10 +34,19 @@ namespace MouseTrackerOverlay
         private WebView2 webView21 = new WebView2();
         private static int width = Screen.PrimaryScreen.Bounds.Width;
         private static int height = Screen.PrimaryScreen.Bounds.Height;
+        private static decimal ratio;
         private void Form1_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
-            NtSetTimerResolution(1, true, ref CurrentResolution);
+            NtSetTimerResolution(1, true, ref CurrentResolution); 
+            Screen[] screenList = Screen.AllScreens;
+            foreach (Screen screen in screenList)
+            {
+                DEVMODE dm = new DEVMODE();
+                dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+                EnumDisplaySettings(screen.DeviceName, -1, ref dm);
+                ratio = Math.Round(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width), 2);
+            }
             Task.Run(() => Start());
         }
         private async void Form1_Shown(object sender, EventArgs e)
@@ -102,7 +113,7 @@ namespace MouseTrackerOverlay
         {
             try
             {
-                await execScriptHelper($"setMouse('{mousex.ToString()}', '{mousey.ToString()}', '{mouseclick.ToString()}');");
+                await execScriptHelper($"setMouse('{mousex.ToString()}', '{mousey.ToString()}', '{mouseclick.ToString()}', '{ratio.ToString().Replace(",", ".")}');");
             }
             catch { }
         }
@@ -118,5 +129,43 @@ namespace MouseTrackerOverlay
             mh.Close();
             webView21.Dispose();
         }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DEVMODE
+    {
+        private const int CCHDEVICENAME = 0x20;
+        private const int CCHFORMNAME = 0x20;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x20)]
+        public string dmDeviceName;
+        public short dmSpecVersion;
+        public short dmDriverVersion;
+        public short dmSize;
+        public short dmDriverExtra;
+        public int dmFields;
+        public int dmPositionX;
+        public int dmPositionY;
+        public ScreenOrientation dmDisplayOrientation;
+        public int dmDisplayFixedOutput;
+        public short dmColor;
+        public short dmDuplex;
+        public short dmYResolution;
+        public short dmTTOption;
+        public short dmCollate;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x20)]
+        public string dmFormName;
+        public short dmLogPixels;
+        public int dmBitsPerPel;
+        public int dmPelsWidth;
+        public int dmPelsHeight;
+        public int dmDisplayFlags;
+        public int dmDisplayFrequency;
+        public int dmICMMethod;
+        public int dmICMIntent;
+        public int dmMediaType;
+        public int dmDitherType;
+        public int dmReserved1;
+        public int dmReserved2;
+        public int dmPanningWidth;
+        public int dmPanningHeight;
     }
 }
