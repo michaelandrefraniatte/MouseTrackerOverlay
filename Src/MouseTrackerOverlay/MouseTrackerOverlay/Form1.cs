@@ -34,7 +34,7 @@ namespace MouseTrackerOverlay
         private WebView2 webView21 = new WebView2();
         private static int width = Screen.PrimaryScreen.Bounds.Width;
         private static int height = Screen.PrimaryScreen.Bounds.Height;
-        private static decimal ratio;
+        private static double ratio;
         private void Form1_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
@@ -45,7 +45,7 @@ namespace MouseTrackerOverlay
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                ratio = Math.Round(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width), 2);
+                ratio = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
                 break;
             }
             Task.Run(() => Start());
