@@ -34,7 +34,7 @@ namespace MouseTrackerOverlay
         private WebView2 webView21 = new WebView2();
         private static int width = Screen.PrimaryScreen.Bounds.Width;
         private static int height = Screen.PrimaryScreen.Bounds.Height;
-        private static double ratio;
+        private static double ratiox, ratioy;
         private void Form1_Load(object sender, EventArgs e)
         {
             TimeBeginPeriod(1);
@@ -45,7 +45,8 @@ namespace MouseTrackerOverlay
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                ratio = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                ratiox = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                ratioy = (double)dm.dmPelsHeight / (double)screen.Bounds.Height;
                 break;
             }
             Task.Run(() => Start());
@@ -114,7 +115,7 @@ namespace MouseTrackerOverlay
         {
             try
             {
-                await execScriptHelper($"setMouse('{mousex.ToString()}', '{mousey.ToString()}', '{mouseclick.ToString()}', '{ratio.ToString().Replace(",", ".")}');");
+                await execScriptHelper($"setMouse('{mousex.ToString()}', '{mousey.ToString()}', '{mouseclick.ToString()}', '{ratiox.ToString().Replace(",", ".")}', '{ratioy.ToString().Replace(",", ".")}');");
             }
             catch { }
         }
