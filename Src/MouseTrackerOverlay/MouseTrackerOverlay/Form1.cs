@@ -46,6 +46,7 @@ namespace MouseTrackerOverlay
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
                 ratio = Math.Round(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width), 2);
+                break;
             }
             Task.Run(() => Start());
         }
